@@ -1,0 +1,18 @@
+*{
+  box-sizing: border-box;
+  color: red !important;
+}
+
+.container-432 {
+  display: table;
+  width: 100%;
+  table-layout: fixed;
+  height: 50px;
+}
+.container-432 > h3 {
+  display: table-cell;
+  vertical-align: top;
+  padding: 15px;
+  background: #ccc;
+  color: red !important;
+}
