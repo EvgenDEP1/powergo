@@ -32,7 +32,7 @@
 										<img src="{% static 'images/main-slider/intro-2.png' %}" alt="">
 									</div>
 									<div class="listing-info">
-										<h3 class="title"><a href="konk-tren.html">{{ item.name }}</a></h3>
+										<h3 class="title"><a href="{% url 'mainapp:training_page' item.pk %}">{{ item.name }}</a></h3>
 {#										<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusm.</p>#}
 										<ul class="place-info">
 											<!-- <li class="place-location"><i class="fa fa-map-marker"></i>12/a, New</li> -->

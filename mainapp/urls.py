@@ -23,4 +23,6 @@ app_name = 'mainapp'
 urlpatterns = [
     path('', mainapp.index, name='index'),
     path('training/', mainapp.training_list, name='training_list'),
+    path('training/page/<int:pk>/', mainapp.training_page, name='training_page'),
+
 ]

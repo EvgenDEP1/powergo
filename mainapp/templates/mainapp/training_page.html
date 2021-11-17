@@ -1,0 +1,424 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/training.css' %}">
+{% endblock %}
+{% block content %}
+    <div class="page-content bg-white">
+        <!-- Section Banner -->
+        <!-- overlay-black-middle -->
+        <div class="dlab-bnr-inr dlab-bnr-inr-sm " style="background-image:url(/static/images/main-slider/intro-2.png); ">
+            <div class="container">
+                <div class="dlab-bnr-inr-entry">
+                    <div class="wonder-bx text-white">
+                        <!-- <div class="wonder-theme">1</div> -->
+                        <div class="wonder-title">
+                            <h2>{{ trainingpage.name }} <i
+                                    class="fa font-20 align-self-center fa-check-circle"></i></h2>
+                            <!-- <p>Winter is gone very soon</p>	 -->
+                        </div>
+                        <div class="wonder-price">
+                            <!-- <p>Price range</p>
+                            <h3 class="m-b0">$50</h3> -->
+                        </div>
+                        <div class="wonder-btn">
+                            <a href="javascript:void(0);" class="site-button button-lg radius-no text-uppercase">Добавить
+                                в корзину</a>
+                        </div>
+                    </div>
+                    <div class="m-b50">
+                        <!-- <a href="javascript:void(0);"><img src="images/listing/default/thum1.jpg" alt=""></a>  -->
+                        <div class="info-card info-card-2 ">
+                            <div class="item">
+                                <div class="info-head info-head-2 info-head-2-3">
+                                    Цель
+                                </div>
+                                <div class="info-text info-text-2">
+                                    {{ trainingpage.purpose }}
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="info-head info-head-2">
+                                    Длительность цикла
+                                </div>
+                                <div class="info-text info-text-2">
+                                    {{ trainingpage.cycle_duration }} недели
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="info-head info-head-2">
+                                    Время тренировки
+                                </div>
+                                <div class="info-text info-text-2">
+                                    {{ trainingpage.training_time_ot }}-{{ trainingpage.training_time_do }} минут
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="info-head info-head-2">
+                                    Место тренировок
+                                </div>
+                                <div class="info-text info-text-2">
+                                    {{ trainingpage.training_place }}
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="info-head info-head-2">
+                                    Тренировок в неделю
+                                </div>
+                                <div class="info-text info-text-2">
+                                    {{ trainingpage.training_sessions_per_week }} дня
+                                </div>
+                            </div>
+                            <div class="item">
+                                <div class="info-head info-head-2">
+                                    Уровень подготовки
+                                </div>
+                                <div class="info-text info-text-2">
+                                    {{ trainingpage.level_training }}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Section Banner END -->
+        <div class="content-block" id="page_content">
+
+            <!-- contact area -->
+            <div class="section-full content-inner">
+                <div class="container">
+
+                    <div class="row">
+                        <!-- Left part start -->
+
+
+                        <!-- col-xl-8 col-lg-7 col-md-12 p-b30 -->
+                        <div class="col-md-12 p-b30">
+                            <div class="section-head text-black mb-3">
+                                <h2 class="box-title">О программе</h2>
+                                <p class="m-b0">Много людей по разным причинам не может посещать тренажерный залы. Это
+                                    может быть связано с нехваткой времени, денег или просто по близости нет
+                                    тренажерного зала.</p>
+                            </div>
+                            <!-- <div class="dlab-divider bg-gray-dark"></div> -->
+                            <!-- <div class="widget widget_getintuch widget_listing">
+                                <ul>
+                                    <li>
+                                        <i class="fa fa-map-marker text-primary"></i>
+                                        <p class="m-b0">3858 Marion Street, VT 05661</p>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-phone text-primary"></i>
+                                        <p class="m-b0">+909 987 978 6 </p>
+                                        <p class="m-b0">+787 6765 66 7</p>
+                                    </li>
+                                    <li>
+                                        <i class="fa fa-envelope text-primary"></i>
+                                        <p class="m-b0">info@webmail.com</p>
+                                        <p class="m-b0">webexample.com</p>
+                                    </li>
+                                    <li class="align-self-center">
+                                        <button class="site-button text-uppercase radius-xl">Report</button>
+                                    </li>
+                                </ul>
+                            </div> -->
+                            <!-- <div class="dlab-divider bg-gray-dark"></div> -->
+                            <p class="m-b15 font-weight-300">Эта программа тренировок для тех, кто хочет развивать тело
+                                дома. И вы на правильном пути - накачаться дома можно! Конечно, больших достижений вы не
+                                достигните, но поддерживать свое тело в форме сможете легко! А наш </p>
+                            <p class="font-weight-300">Но хотелось бы отметить, что всё-таки лучше заниматься в
+                                тренажерном зале. Вот самые большие аргументы:</p>
+                            <ol class="spisok">
+                                <li>Атмосфера. В тренажерном зале вы готовы выложится на все 100%.</li>
+                                <li>Полный набор необходимых тренажеров и снарядов. Гантели, штанги, скамьи, машина
+                                    Смита, куча тренажеров. Все эти тренажеры позволяют с большой эффективностью
+                                    тренироваться и стоят больших денег. Кроме того, не у каждого дома найдется место,
+                                    чтобы всё это расставить.
+                                </li>
+                                <li>Напарник. Всегда в тренажерном зале Вы найдете того, кто подстрахует или подскажет,
+                                    что Вы делаете не так.
+                                </li>
+                            </ol>
+                            <p class="font-weight-300">Для занятий в домашних условиях вам понадобиться совсем немного
+                                спортивного инвентаря:</p>
+                            <ol class="spisok">
+                                <li>Разборные гантели</li>
+                                <li>Турник</li>
+                                <li>Табуретка</li>
+                            </ol>
+                            <p class="font-weight-300">Не забываем про главное - правильная техника выполнения
+                                упражнений и систематические тренировки.</p>
+                            <p class="font-weight-300">Не забывайте перед тренировками размяться (минут 10). Подготовьте
+                                суставы и мышцы для нагрузки - это обязательное требование и для домашних тренировок и
+                                занятий в зале.</p>
+                            <!-- <div class="clearfix m-b50">
+                                <img class="alignleft" src="images/listing/grid/pic1.jpg" alt="">
+                                <p class="font-weight-300">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis.</p>
+                            </div> -->
+
+                        </div>
+                        <!-- blog END -->
+                    </div>
+                    <!-- Left part END -->
+                    <!-- Side bar start -->
+
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- contact area END -->
+
+    <!-- Class Time Section Begin -->
+    <section class="classtime-section class-time-table spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="section-title">
+                        <h2>Тренировочный план</h2>
+                    </div>
+                </div>
+            </div>
+            <!-- <div class="row">
+                <div class="col-lg-12">
+                    <div class="timetable-controls">
+                        <ul>
+                            <li class="active" data-tsfilter="all">all class</li>
+                            <li data-tsfilter="crossfit">crossfit</li>
+                            <li data-tsfilter="lunge">lunge ball</li>
+                            <li data-tsfilter="ppsr">ppsr</li>
+                            <li data-tsfilter="walls">walls</li>
+                            <li data-tsfilter="candy">candy</li>
+                        </ul>
+                    </div>
+                </div>
+            </div> -->
+            <div class="classtime-table">
+                <table>
+                    <thead>
+                    <tr>
+                        <th></th>
+                        <th>Понедельник</th>
+                        <th>Вторник</th>
+                        <th>Среда</th>
+                        <th>Четверг</th>
+                        <th>Пятница</th>
+                        <th>Суббота</th>
+                        <th>Воскресенье</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for item in weeks %}
+                    <tr>
+
+                        <td class="workout-time">{{ item.week }} неделя</td>
+                            {% if item.monday == 'День отдыха' %}
+                                <td>{{ item.monday }}</td>
+                            {% else %}
+                                <td class="hover-bg ts-item">
+                                <a href="#">{{ item.monday }}</a>
+                            </td>
+                            {% endif %}
+
+
+                            {% if item.tuesday == 'День отдыха' %}
+                                <td>{{ item.tuesday }}</td>
+                            {% else %}
+                                <td class="hover-bg ts-item">
+                                <a href="#">{{ item.tuesday }}</a>
+                            </td>
+                            {% endif %}
+
+
+                            {% if item.wednesday == 'День отдыха' %}
+                                <td>{{ item.wednesday }}</td>
+                            {% else %}
+                                <td class="hover-bg ts-item">
+                                <a href="#">{{ item.wednesday }}</a>
+                            </td>
+                            {% endif %}
+
+
+                            {% if item.thursday == 'День отдыха' %}
+                                <td>{{ item.thursday }}</td>
+                            {% else %}
+                                <td class="hover-bg ts-item">
+                                <a href="#">{{ item.thursday }}</a>
+                            </td>
+                            {% endif %}
+
+
+                            {% if item.friday == 'День отдыха' %}
+                                <td>{{ item.friday }}</td>
+                            {% else %}
+                                <td class="hover-bg ts-item">
+                                <a href="#">{{ item.friday }}</a>
+                            </td>
+                            {% endif %}
+
+
+                            {% if item.saturday == 'День отдыха' %}
+                                <td>{{ item.saturday }}</td>
+                            {% else %}
+                                <td class="hover-bg ts-item">
+                                <a href="#">{{ item.saturday }}</a>
+                            </td>
+                            {% endif %}
+
+
+                            {% if item.sunday == 'День отдыха' %}
+                                <td>{{ item.sunday }}</td>
+                            {% else %}
+                                <td class="hover-bg ts-item">
+                                <a href="#">{{ item.sunday }}</a>
+                            </td>
+                            {% endif %}
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+    <!-- Class Time Section End -->
+
+
+    <div class="section-full bg-white content-inner owl-out">
+        <div class="container">
+            <div class="card">
+                <div class="card-header">
+                    Первая неделя / Понедельник / ДЕНЬ 1
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-card-2">
+                        <div class="card-video-2">
+                            <div id="player" style="width: 350px;"></div>
+                        </div>
+                        <div class="card-text-2">
+                            <h4>Разминка перед тренировкой</h4>
+                            <p class="card-text-2-p">Для разогрева организма и подготовке к тренировке. выполнять не
+                                менее 5 минут.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card card-2">
+                <div class="card-body">
+                    <div class="card-card-2">
+                        <div class="card-video-2">
+                            <div id="player_2" style="width: 350px;"></div>
+                        </div>
+                        <div class="card-text-2">
+                            <h4>Скручивания лёжа на полу</h4>
+                            <div class="info-card">
+                                <div class="item">
+                                    <div class="info-head">
+                                        повторений
+                                    </div>
+                                    <div class="info-text">
+                                        15
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="info-head">
+                                        подходов
+                                    </div>
+                                    <div class="info-text">
+                                        3
+                                    </div>
+                                </div>
+                                <div class="item">
+                                    <div class="info-head">
+                                        отдых, мин.
+                                    </div>
+                                    <div class="info-text">
+                                        1
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            <!-- <div class="card">
+                <div class="card-header">
+                    Первая неделя / Понедельник / НОГИ ГРУДЬ
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4 card-video">
+                            <div id="player" style="width: 350px;"></div>
+                        </div>
+                        <div class="col-8 card-text">
+                            <h4>Разминка перед тренировкой</h4>
+                            <p class="card-text-p">Для разогрева организма и подготовке к тренировке. выполнять не менее 5 минут.</p>
+                        </div>
+                    </div>
+                </div>
+            </div> -->
+
+
+            <!-- <div class="card card-2">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-4 card-video">
+                            <div id="player_2" style="width: 350px;"></div>
+                        </div>
+                        <div class="col-8 card-text">
+                            <h4>Скручивания лёжа на полу</h4> -->
+            <!-- <p class="card-text-p">Для разогрева организма и подготовке к тренировке. выполнять не менее 5 минут.</p> -->
+            <!-- <ul>
+                <li>
+                    повторений: <b>15</b>
+                </li>
+                <li>
+                    подходов: <b>3</b>
+                </li>
+                <li>
+                    отдых, мин.: <b>1</b>
+                </li>
+            </ul> -->
+            <!-- <div class="info-card">
+                <div class="item">
+                    <div class="info-head">
+                        повторений
+                    </div>
+                    <div class="info-text">
+                        15
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="info-head">
+                        подходов
+                    </div>
+                    <div class="info-text">
+                        3
+                    </div>
+                </div>
+                <div class="item">
+                    <div class="info-head">
+                        отдых, мин.
+                    </div>
+                    <div class="info-text">
+                        1
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+</div> -->
+        </div>
+    </div>
+    </div>
+{% endblock %}

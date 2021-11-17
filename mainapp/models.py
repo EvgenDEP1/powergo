@@ -1,12 +1,26 @@
 from django.db import models
 
 
-class TrainingPlace(models.TextChoices):
-    HOME = 'H', 'Дом'
+class TrainingPlace(models.Model):
+    training_place = models.CharField(verbose_name='место тренировок', max_length=128, unique=True)
+
+    def __str__(self):
+        return f'{self.training_place}'
+
+    class Meta:
+        verbose_name = 'место тренировок'
+        verbose_name_plural = 'место тренировок'
 
 
-class LevelTraining(models.TextChoices):
-    BEGINNER = 'BE', 'Новичок'
+class LevelTraining(models.Model):
+    level_training = models.CharField(verbose_name='уровень подготовки', max_length=128, unique=True)
+
+    def __str__(self):
+        return f'{self.level_training}'
+
+    class Meta:
+        verbose_name = 'уровень подготовки'
+        verbose_name_plural = 'уровень подготовки'
 
 
 class Training(models.Model):
@@ -15,11 +29,11 @@ class Training(models.Model):
     cycle_duration = models.IntegerField(verbose_name='длительность цикла')
     training_time_ot = models.IntegerField(verbose_name='время тренировки от')
     training_time_do = models.IntegerField(verbose_name='время тренировки до')
-    training_place = models.CharField(verbose_name='место тренировок', max_length=2, choices=TrainingPlace.choices,
-                                      default=TrainingPlace.HOME)
+    training_place = models.ForeignKey(TrainingPlace,
+                                  on_delete=models.CASCADE)
     training_sessions_per_week = models.IntegerField(verbose_name='тренировок в неделю')
-    level_training = models.CharField(verbose_name='уровень подготовки', max_length=2, choices=LevelTraining.choices,
-                                      default=LevelTraining.BEGINNER)
+    level_training = models.ForeignKey(LevelTraining,
+                                  on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.name}'
@@ -27,3 +41,21 @@ class Training(models.Model):
     class Meta:
         verbose_name = 'тренировка'
         verbose_name_plural = 'тренировки'
+
+
+class Weeks(models.Model):
+    training = models.ForeignKey(Training,
+                                  on_delete=models.CASCADE)
+    week = models.IntegerField(verbose_name='неделя')
+    monday = models.CharField(verbose_name='понедельник', max_length=64)
+    tuesday = models.CharField(verbose_name='вторник', max_length=64)
+    wednesday = models.CharField(verbose_name='среда', max_length=64)
+    thursday = models.CharField(verbose_name='четверг', max_length=64)
+    friday = models.CharField(verbose_name='пятница', max_length=64)
+    saturday = models.CharField(verbose_name='суббота', max_length=64)
+    sunday = models.CharField(verbose_name='воскресенье', max_length=64)
+
+
+
+
+

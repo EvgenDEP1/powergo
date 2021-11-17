@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from mainapp.models import Training
+from mainapp.models import Training, Weeks
 
 
 def index(request):
@@ -18,3 +18,16 @@ def training_list(request):
         'title': 'POWERGO',
     }
     return render(request, 'mainapp/training_list.html', context)
+
+
+def training_page(request, pk):
+    # items = SubjectCategory.all()
+    trainingpage = Training.objects.get(pk=pk)
+    weeks = Weeks.objects.filter(training_id=pk)
+    context = {
+        'trainingpage': trainingpage,
+        'weeks': weeks,
+        'title': 'Тренировки',
+    }
+
+    return render(request, 'mainapp/training_page.html', context)

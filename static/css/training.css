@@ -1,6 +1,5 @@
 *{
   box-sizing: border-box;
-  color: red !important;
 }
 
 .container-432 {
@@ -9,10 +8,9 @@
   table-layout: fixed;
   height: 50px;
 }
-.container-432 > h3 {
+.container-432 > div.listing-info {
   display: table-cell;
   vertical-align: top;
   padding: 15px;
   background: #ccc;
-  color: red !important;
 }
