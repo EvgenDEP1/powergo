@@ -55,6 +55,46 @@ class Weeks(models.Model):
     saturday = models.CharField(verbose_name='суббота', max_length=64)
     sunday = models.CharField(verbose_name='воскресенье', max_length=64)
 
+    def __str__(self):
+        return f'{self.training}: {self.week}'
+
+    class Meta:
+        verbose_name = 'неделя'
+        verbose_name_plural = 'недели'
+
+
+class Day(models.Model):
+    training = models.ForeignKey(Training,
+                                 on_delete=models.CASCADE)
+    weeks = models.ForeignKey(Weeks,
+                                 on_delete=models.CASCADE)
+    day = models.CharField(verbose_name='день', max_length=64)
+
+    def __str__(self):
+        return f'{self.weeks}/ {self.day}'
+
+    class Meta:
+        verbose_name = 'день'
+        verbose_name_plural = 'дни'
+
+
+class Exercises(models.Model):
+    training = models.ForeignKey(Training,
+                                 on_delete=models.CASCADE)
+    day = models.ForeignKey(Day,
+                              on_delete=models.CASCADE)
+    name = models.CharField(verbose_name='упражнение', max_length=128)
+    repetitions = models.IntegerField(verbose_name='повторений')
+    approaches = models.IntegerField(verbose_name='повторов')
+    rest = models.IntegerField(verbose_name='отдых (мин)')
+
+    def __str__(self):
+        return f'{self.day} / {self.name}'
+
+    class Meta:
+        verbose_name = 'упражнение'
+        verbose_name_plural = 'упражнения'
+
 
 
 

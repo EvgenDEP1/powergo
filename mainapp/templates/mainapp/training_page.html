@@ -220,7 +220,7 @@
                                 <td>{{ item.monday }}</td>
                             {% else %}
                                 <td class="hover-bg ts-item">
-                                <a href="#">{{ item.monday }}</a>
+                                <a href="{% url 'mainapp:training_day_page'  %}">{{ item.monday }}</a>
                             </td>
                             {% endif %}
 
@@ -229,7 +229,7 @@
                                 <td>{{ item.tuesday }}</td>
                             {% else %}
                                 <td class="hover-bg ts-item">
-                                <a href="#">{{ item.tuesday }}</a>
+                                <a href="{% url 'mainapp:training_day_page' item.pk %}">{{ item.tuesday }}</a>
                             </td>
                             {% endif %}
 
@@ -238,7 +238,7 @@
                                 <td>{{ item.wednesday }}</td>
                             {% else %}
                                 <td class="hover-bg ts-item">
-                                <a href="#">{{ item.wednesday }}</a>
+                                <a href="{% url 'mainapp:training_day_page' item.pk %}">{{ item.wednesday }}</a>
                             </td>
                             {% endif %}
 
@@ -247,7 +247,7 @@
                                 <td>{{ item.thursday }}</td>
                             {% else %}
                                 <td class="hover-bg ts-item">
-                                <a href="#">{{ item.thursday }}</a>
+                                <a href="{% url 'mainapp:training_day_page' item.pk %}">{{ item.thursday }}</a>
                             </td>
                             {% endif %}
 
@@ -256,7 +256,7 @@
                                 <td>{{ item.friday }}</td>
                             {% else %}
                                 <td class="hover-bg ts-item">
-                                <a href="#">{{ item.friday }}</a>
+                                <a href="{% url 'mainapp:training_day_page' item.pk %}">{{ item.friday }}</a>
                             </td>
                             {% endif %}
 
@@ -265,7 +265,7 @@
                                 <td>{{ item.saturday }}</td>
                             {% else %}
                                 <td class="hover-bg ts-item">
-                                <a href="#">{{ item.saturday }}</a>
+                                <a href="{% url 'mainapp:training_day_page' item.pk %}">{{ item.saturday }}</a>
                             </td>
                             {% endif %}
 
@@ -274,7 +274,7 @@
                                 <td>{{ item.sunday }}</td>
                             {% else %}
                                 <td class="hover-bg ts-item">
-                                <a href="#">{{ item.sunday }}</a>
+                                <a href="{% url 'mainapp:training_day_page' item.pk %}">{{ item.sunday }}</a>
                             </td>
                             {% endif %}
                         </tr>
@@ -289,41 +289,45 @@
 
     <div class="section-full bg-white content-inner owl-out">
         <div class="container">
-            <div class="card">
-                <div class="card-header">
-                    Первая неделя / Понедельник / ДЕНЬ 1
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="card-card-2">
-                        <div class="card-video-2">
-                            <div id="player" style="width: 350px;"></div>
-                        </div>
-                        <div class="card-text-2">
-                            <h4>Разминка перед тренировкой</h4>
-                            <p class="card-text-2-p">Для разогрева организма и подготовке к тренировке. выполнять не
-                                менее 5 минут.</p>
-                        </div>
+            {% for item in day %}
+                <div class="card">
+                    <div class="card-header">
+                        {{ item.weeks }} неделя / {{ item.day }}
                     </div>
                 </div>
-            </div>
+                <div class="card card-2">
 
-            <div class="card card-2">
+
+                    <div class="card-body">
+                        <div class="card-card-2">
+                            <div class="card-video-2">
+                                <div id="player" style="width: 350px;"></div>
+                            </div>
+                            <div class="card-text-2">
+                                <h4>Разминка перед тренировкой</h4>
+                                <p class="card-text-2-p">Для разогрева организма и подготовке к тренировке. выполнять не
+                                    менее 5 минут.</p>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+
+                {% for i in exercises %}
+                    <div class="card card-2">
                 <div class="card-body">
                     <div class="card-card-2">
                         <div class="card-video-2">
                             <div id="player_2" style="width: 350px;"></div>
                         </div>
                         <div class="card-text-2">
-                            <h4>Скручивания лёжа на полу</h4>
+                            <h4>{{ i.name }}</h4>
                             <div class="info-card">
                                 <div class="item">
                                     <div class="info-head">
                                         повторений
                                     </div>
                                     <div class="info-text">
-                                        15
+                                        {{ i.repetitions }}
                                     </div>
                                 </div>
                                 <div class="item">
@@ -331,7 +335,7 @@
                                         подходов
                                     </div>
                                     <div class="info-text">
-                                        3
+                                        {{ i.approaches }}
                                     </div>
                                 </div>
                                 <div class="item">
@@ -339,7 +343,7 @@
                                         отдых, мин.
                                     </div>
                                     <div class="info-text">
-                                        1
+                                        {{ i.rest }}
                                     </div>
                                 </div>
                             </div>
@@ -347,6 +351,13 @@
                     </div>
                 </div>
             </div>
+                {% endfor %}
+
+
+            {% endfor %}
+
+
+
 
 
             <!-- <div class="card">

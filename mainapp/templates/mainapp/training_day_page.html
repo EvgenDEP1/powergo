@@ -1,0 +1,12 @@
+{% extends 'mainapp/base.html' %}
+{% load static %}
+
+
+{% block css %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/training.css' %}">
+{% endblock %}
+{% block content %}
+    {% for item in exercises %}
+        <h1>{{ item.name }}</h1>
+    {% endfor %}
+{% endblock %}
