@@ -37,11 +37,11 @@ def training_page(request, pk):
 
 
 def training_day_page(request, pk):
-    day = Exercises.objects.filter(day_id=pk)
-    # exercises = Exercises.objects.filter(day_id=pk)
+    day = Day.objects.get(pk=pk)
+    exercises = Exercises.objects.filter(day_id=pk)
     context = {
         'day': day,
-
+        'exercises': exercises,
         'title': 'Тренировки',
     }
 

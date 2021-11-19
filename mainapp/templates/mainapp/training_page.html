@@ -9,7 +9,8 @@
     <div class="page-content bg-white">
         <!-- Section Banner -->
         <!-- overlay-black-middle -->
-        <div class="dlab-bnr-inr dlab-bnr-inr-sm " style="background-image:url(/static/images/main-slider/intro-2.png); ">
+        <div class="dlab-bnr-inr dlab-bnr-inr-sm "
+             style="background-image:url(/static/images/main-slider/intro-2.png); ">
             <div class="container">
                 <div class="dlab-bnr-inr-entry">
                     <div class="wonder-bx text-white">
@@ -213,15 +214,15 @@
                     </thead>
                     <tbody>
                     {% for item in weeks %}
-                    <tr>
+                        <tr>
 
-                        <td class="workout-time">{{ item.week }} неделя</td>
+                            <td class="workout-time">{{ item.week }} неделя</td>
                             {% if item.monday == 'День отдыха' %}
                                 <td>{{ item.monday }}</td>
                             {% else %}
                                 <td class="hover-bg ts-item">
-                                <a href="{% url 'mainapp:training_day_page'  %}">{{ item.monday }}</a>
-                            </td>
+                                    {{ item.monday }}
+                                </td>
                             {% endif %}
 
 
@@ -229,8 +230,8 @@
                                 <td>{{ item.tuesday }}</td>
                             {% else %}
                                 <td class="hover-bg ts-item">
-                                <a href="{% url 'mainapp:training_day_page' item.pk %}">{{ item.tuesday }}</a>
-                            </td>
+                                    {{ item.tuesday }}
+                                </td>
                             {% endif %}
 
 
@@ -238,8 +239,8 @@
                                 <td>{{ item.wednesday }}</td>
                             {% else %}
                                 <td class="hover-bg ts-item">
-                                <a href="{% url 'mainapp:training_day_page' item.pk %}">{{ item.wednesday }}</a>
-                            </td>
+                                    {{ item.wednesday }}
+                                </td>
                             {% endif %}
 
 
@@ -247,8 +248,8 @@
                                 <td>{{ item.thursday }}</td>
                             {% else %}
                                 <td class="hover-bg ts-item">
-                                <a href="{% url 'mainapp:training_day_page' item.pk %}">{{ item.thursday }}</a>
-                            </td>
+                                    {{ item.thursday }}
+                                </td>
                             {% endif %}
 
 
@@ -256,8 +257,8 @@
                                 <td>{{ item.friday }}</td>
                             {% else %}
                                 <td class="hover-bg ts-item">
-                                <a href="{% url 'mainapp:training_day_page' item.pk %}">{{ item.friday }}</a>
-                            </td>
+                                    {{ item.friday }}
+                                </td>
                             {% endif %}
 
 
@@ -265,8 +266,8 @@
                                 <td>{{ item.saturday }}</td>
                             {% else %}
                                 <td class="hover-bg ts-item">
-                                <a href="{% url 'mainapp:training_day_page' item.pk %}">{{ item.saturday }}</a>
-                            </td>
+                                    <a href="{% url 'mainapp:training_day_page' item.pk %}">{{ item.saturday }}</a>
+                                </td>
                             {% endif %}
 
 
@@ -274,11 +275,11 @@
                                 <td>{{ item.sunday }}</td>
                             {% else %}
                                 <td class="hover-bg ts-item">
-                                <a href="{% url 'mainapp:training_day_page' item.pk %}">{{ item.sunday }}</a>
-                            </td>
+                                    <a href="{% url 'mainapp:training_day_page' item.pk %}">{{ item.sunday }}</a>
+                                </td>
                             {% endif %}
                         </tr>
-                        {% endfor %}
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>
@@ -292,144 +293,18 @@
             {% for item in day %}
                 <div class="card">
                     <div class="card-header">
-                        {{ item.weeks }} неделя / {{ item.day }}
+                        <a href="{% url 'mainapp:training_day_page' item.pk %}">{{ item.weeks }} неделя
+                            / {{ item.day }}</a>
                     </div>
                 </div>
-                <div class="card card-2">
 
 
-                    <div class="card-body">
-                        <div class="card-card-2">
-                            <div class="card-video-2">
-                                <div id="player" style="width: 350px;"></div>
-                            </div>
-                            <div class="card-text-2">
-                                <h4>Разминка перед тренировкой</h4>
-                                <p class="card-text-2-p">Для разогрева организма и подготовке к тренировке. выполнять не
-                                    менее 5 минут.</p>
-                            </div>
-                        </div>
-                    </div>
-                 </div>
 
-                {% for i in exercises %}
-                    <div class="card card-2">
-                <div class="card-body">
-                    <div class="card-card-2">
-                        <div class="card-video-2">
-                            <div id="player_2" style="width: 350px;"></div>
-                        </div>
-                        <div class="card-text-2">
-                            <h4>{{ i.name }}</h4>
-                            <div class="info-card">
-                                <div class="item">
-                                    <div class="info-head">
-                                        повторений
-                                    </div>
-                                    <div class="info-text">
-                                        {{ i.repetitions }}
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="info-head">
-                                        подходов
-                                    </div>
-                                    <div class="info-text">
-                                        {{ i.approaches }}
-                                    </div>
-                                </div>
-                                <div class="item">
-                                    <div class="info-head">
-                                        отдых, мин.
-                                    </div>
-                                    <div class="info-text">
-                                        {{ i.rest }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-                {% endfor %}
 
 
             {% endfor %}
 
 
-
-
-
-            <!-- <div class="card">
-                <div class="card-header">
-                    Первая неделя / Понедельник / НОГИ ГРУДЬ
-                </div>
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-4 card-video">
-                            <div id="player" style="width: 350px;"></div>
-                        </div>
-                        <div class="col-8 card-text">
-                            <h4>Разминка перед тренировкой</h4>
-                            <p class="card-text-p">Для разогрева организма и подготовке к тренировке. выполнять не менее 5 минут.</p>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-
-
-            <!-- <div class="card card-2">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-4 card-video">
-                            <div id="player_2" style="width: 350px;"></div>
-                        </div>
-                        <div class="col-8 card-text">
-                            <h4>Скручивания лёжа на полу</h4> -->
-            <!-- <p class="card-text-p">Для разогрева организма и подготовке к тренировке. выполнять не менее 5 минут.</p> -->
-            <!-- <ul>
-                <li>
-                    повторений: <b>15</b>
-                </li>
-                <li>
-                    подходов: <b>3</b>
-                </li>
-                <li>
-                    отдых, мин.: <b>1</b>
-                </li>
-            </ul> -->
-            <!-- <div class="info-card">
-                <div class="item">
-                    <div class="info-head">
-                        повторений
-                    </div>
-                    <div class="info-text">
-                        15
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="info-head">
-                        подходов
-                    </div>
-                    <div class="info-text">
-                        3
-                    </div>
-                </div>
-                <div class="item">
-                    <div class="info-head">
-                        отдых, мин.
-                    </div>
-                    <div class="info-text">
-                        1
-                    </div>
-                </div>
-            </div>
-
         </div>
-    </div>
-</div>
-</div> -->
-        </div>
-    </div>
     </div>
 {% endblock %}
