@@ -21,6 +21,8 @@ from powergo import settings
 urlpatterns = [
     path('', include('mainapp.urls', namespace='mainapp')),
 
+    path('summernote/', include('django_summernote.urls')),
+
     path('admin/', admin.site.urls),
 ]
 

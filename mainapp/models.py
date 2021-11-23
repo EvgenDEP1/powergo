@@ -1,4 +1,5 @@
 from django.db import models
+from django_summernote.fields import SummernoteTextField
 
 
 class TrainingPlace(models.Model):
@@ -34,7 +35,8 @@ class Training(models.Model):
     training_sessions_per_week = models.IntegerField(verbose_name='тренировок в неделю')
     level_training = models.ForeignKey(LevelTraining,
                                   on_delete=models.CASCADE)
-    # img = models.ImageField(verbose_name='превью', upload_to='img/training_list/')
+    text = SummernoteTextField(verbose_name='о программе')
+    img = models.ImageField(verbose_name='превью', upload_to='img/training_list/')
 
     def __str__(self):
         return f'{self.name}'
