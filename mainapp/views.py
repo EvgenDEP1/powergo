@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from mainapp.models import Training, Weeks, Day, Exercises
+from mainapp.models import Training, Weeks, Day, Exercises, Category
 
 
 def index(request):
@@ -25,11 +25,13 @@ def training_page(request, pk):
     weeks = Weeks.objects.filter(training_id=pk)
     day = Day.objects.filter(training_id=pk)
     exercises = Exercises.objects.filter(day_id=pk)
+    cat = Category
     context = {
         'trainingpage': trainingpage,
         'weeks': weeks,
         'day': day,
         'exercises': exercises,
+        'cat': cat,
         'title': 'Тренировки',
     }
 

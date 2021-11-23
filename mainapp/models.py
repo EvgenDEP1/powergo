@@ -34,6 +34,7 @@ class Training(models.Model):
     training_sessions_per_week = models.IntegerField(verbose_name='тренировок в неделю')
     level_training = models.ForeignKey(LevelTraining,
                                   on_delete=models.CASCADE)
+    # img = models.ImageField(verbose_name='превью', upload_to='img/training_list/')
 
     def __str__(self):
         return f'{self.name}'
@@ -47,20 +48,25 @@ class Weeks(models.Model):
     training = models.ForeignKey(Training,
                                   on_delete=models.CASCADE)
     week = models.IntegerField(verbose_name='неделя')
-    monday = models.CharField(verbose_name='понедельник', max_length=64)
-    tuesday = models.CharField(verbose_name='вторник', max_length=64)
-    wednesday = models.CharField(verbose_name='среда', max_length=64)
-    thursday = models.CharField(verbose_name='четверг', max_length=64)
-    friday = models.CharField(verbose_name='пятница', max_length=64)
-    saturday = models.CharField(verbose_name='суббота', max_length=64)
-    sunday = models.CharField(verbose_name='воскресенье', max_length=64)
 
     def __str__(self):
-        return f'{self.training}: {self.week}'
+        return f'{self.training}: {self.week} неделя'
 
     class Meta:
         verbose_name = 'неделя'
         verbose_name_plural = 'недели'
+
+
+class Category(models.TextChoices):
+    MONDAY = 'MO', 'понедельник'
+    TUESDAY = 'TU', 'вторник'
+    WEDNESDAY = 'WE', 'среда'
+    THURSDAY = 'TH', 'четверг'
+    FRIDAY = 'FR', 'пятница'
+    SATURDAY = 'SA', 'суббота'
+    SUNDAY = 'SU', 'воскресенье'
+    # WEEKEND = "WD", 'день отдыха'
+    # DAY = 'DA', models.CharField()
 
 
 class Day(models.Model):
@@ -68,10 +74,12 @@ class Day(models.Model):
                                  on_delete=models.CASCADE)
     weeks = models.ForeignKey(Weeks,
                                  on_delete=models.CASCADE)
-    day = models.CharField(verbose_name='день', max_length=64)
+    category = models.CharField(max_length=2, choices=Category.choices,
+                                verbose_name='день недели')
+    day = models.IntegerField(verbose_name='день')
 
     def __str__(self):
-        return f'{self.weeks}/ {self.day}'
+        return f'{self.training} / {self.weeks} неделя / {self.day} день'
 
     class Meta:
         verbose_name = 'день'
@@ -84,6 +92,8 @@ class Exercises(models.Model):
     day = models.ForeignKey(Day,
                               on_delete=models.CASCADE)
     name = models.CharField(verbose_name='упражнение', max_length=128)
+    img = models.ImageField(verbose_name='превью', upload_to='img/')
+    video = models.FileField(verbose_name='видео', upload_to='video/')
     repetitions = models.IntegerField(verbose_name='повторений')
     approaches = models.IntegerField(verbose_name='повторов')
     rest = models.IntegerField(verbose_name='отдых (мин)')

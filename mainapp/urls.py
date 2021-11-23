@@ -27,3 +27,5 @@ urlpatterns = [
     path('training/day/<int:pk>/', mainapp.training_day_page, name='training_day_page'),
 
 ]
+
+
