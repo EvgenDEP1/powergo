@@ -17,9 +17,14 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from powergo import settings
+from django.contrib.auth.decorators import login_required
 
 urlpatterns = [
     path('', include('mainapp.urls', namespace='mainapp')),
+
+    path('basket/', include('basketapp.urls', namespace='basket')),
+
+    path('accounts/', include('authapp.urls', namespace='authapp')),
 
     path('summernote/', include('django_summernote.urls')),
 

@@ -1,0 +1,103 @@
+{% extends 'authapp/base.html' %}
+
+{% load static %}
+{% block content %}
+    <div id="loading-area"></div>
+    <div class="page-wraper font-roboto">
+        <!-- header -->
+
+        <!-- <div class="page-content bg-white"> -->
+        <!-- Section Banner -->
+        <div class="dlab-bnr-inr dlab-bnr-inr-md bnr-style1"
+             style="background-image:url(/static/images/main-slider/intro-2.png); background-size: cover;"
+             id="dezParticles">
+            <div class="container container-2">
+                <div class="dlab-bnr-inr-entry align-m dlab-home">
+
+                    <div class="bnr-content">
+                        <div class="logo-vxot">
+                            <a href="{% url 'mainapp:index' %}" class="logo-1"><img
+                                    src="{% static 'images/Frame_4.png' %}" alt=""></a>
+                        </div>
+
+                        <div class="tab" role="tabpanel">
+
+                            <!-- Nav tabs -->
+                            <ul class="nav nav-tabs" role="tablist">
+
+                                <li class="active"><a href="{% url 'authapp:login' %}">Вход</a></li>
+                                <li><a href="{% url 'authapp:register' %}">Регистрация</a></li>
+
+                            </ul>
+
+
+                            <!-- Tab panes -->
+                            <div class="tab-content tabs">
+                                <!-- fade -->
+
+                                <div role="tabpanel" class="tab-pane in active">
+                                    <form class="form-horizontal" method="post">
+                                        <div class="form-group">
+                                            <label for="exampleInputEmail1">ЛОГИН</label>
+                                            {% csrf_token %}
+                                            {{ form.username }}
+
+{#                                            <input type="email" class="form-control" id="exampleInputEmail1">#}
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="exampleInputPassword1">ПАРОЛЬ</label>
+                                            {% csrf_token %}
+                                            {{ form.password }}
+{#                                            <input type="password" class="form-control" id="exampleInputPassword1">#}
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" class="btn btn-default btn-sv">войти</button>
+                                        </div>
+                                    </form>
+                                </div>
+{#                                <div role="tabpanel" class="tab-pane fade" id="Section2">#}
+{#                                    <form class="form-horizontal">#}
+{#                                        <div class="form-group">#}
+{#                                            <label for="exampleInputEmail1">First Name</label>#}
+{#                                            <input type="text" class="form-control" id="exampleInputEmail1">#}
+{#                                        </div>#}
+{#                                        <div class="form-group">#}
+{#                                            <label for="exampleInputEmail1">Last Name</label>#}
+{#                                            <input type="text" class="form-control" id="exampleInputEmail1">#}
+{#                                        </div>#}
+{#                                        <div class="form-group">#}
+{#                                            <label for="exampleInputEmail1">Email address</label>#}
+{#                                            <input type="email" class="form-control" id="exampleInputEmail1">#}
+{#                                        </div>#}
+{#                                        <div class="form-group">#}
+{#                                            <label for="exampleInputPassword1">Password</label>#}
+{#                                            <input type="password" class="form-control" id="exampleInputPassword1">#}
+{#                                        </div>#}
+{#                                        <div class="form-group">#}
+{#                                            <button type="submit" class="btn btn-default">Sign up</button>#}
+{#                                        </div>#}
+{#                                    </form>#}
+{#                                </div>#}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Section Banner END -->
+        <!-- <div class="content-block" id="page_content">
+
+        </div> -->
+
+        <!-- </div> -->
+
+
+        <!-- Content END-->
+        <!-- Footer -->
+
+
+        <!-- Footer END -->
+        <button class="scroltop fa fa-chevron-up"></button>
+    </div>
+{% endblock %}
+

@@ -2,6 +2,9 @@
 {% load static %}
 
 
+{% block js %}
+    <script src="{% static 'js/basket.js' %}"></script>
+{% endblock %}
 {% block css %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/training.css' %}">
 {% endblock %}
@@ -25,8 +28,13 @@
                             <h3 class="m-b0">$50</h3> -->
                         </div>
                         <div class="wonder-btn">
-                            <a href="javascript:void(0);" class="site-button button-lg radius-no text-uppercase">Добавить
-                                в корзину</a>
+                            <a href="{% url 'basket:remove' trainingpage.id %}" class="btn btn-dark remove-bas">удалить</a>
+
+
+
+                            <a href="{% url 'basket:add' trainingpage.id %}"
+                               class="site-button button-lg radius-no text-uppercase">Добавить
+                                в избранное</a>
                         </div>
                     </div>
                     <div class="m-b50">

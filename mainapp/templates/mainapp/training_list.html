@@ -29,8 +29,8 @@
                                 <li class="near-by-you design card-container col-lg-3 col-md-6 col-sm-6">
 								<div class="listing-bx featured-star-right m-b30 style-2 ">
 									<div class="listing-media">
-                                        {% if traininglist.img %}
-                                            <img src="{{ traininglist.img.url }}" alt="">
+                                        {% if item.img %}
+                                            <img src="{{ item.img.url }}" alt="">
                                         {% else %}
                                             <img src="{% static 'images/main-slider/intro-2.png' %}" alt="">
                                         {% endif %}
