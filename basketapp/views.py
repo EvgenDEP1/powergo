@@ -11,29 +11,44 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def index(request):
-    items = TrainingBasket.objects.filter(user=request.user)
+    object_list = TrainingBasket.objects.filter(user=request.user)
     context = {
-        'object_list': items,
+        'object_list': object_list,
     }
 
     return render(request, 'basketapp/basket.html', context)
 
 
 def add(request, training_id):
+    if not request.user.is_authenticated:
+        return JsonResponse({
+            'status': False,
+            'message': 'Авторизуйтесь, чтобы добавить товар в корзину!'
+        })
     training = Training.objects.get(pk=training_id)
-    TrainingBasket.objects.get_or_create(
+    tra_object, creaated = TrainingBasket.objects.get_or_create(
         user=request.user,
         training=training
     )
+    if creaated:
+        return JsonResponse({
+            'status': True,
+            'id': training.id,
+            'message': 'Вы успешно добавили товар в корзину!'
+        })
+    return JsonResponse({
+        'status': False,
+        'message': 'Товар уже в корзине!'
+    })
 
-    return HttpResponseRedirect(reverse('mainapp:training_page',
-                                        kwargs={'pk': training.id}))
+    # return HttpResponseRedirect(reverse('mainapp:training_page',
+    #                                     kwargs={'pk': training.id}))
 
 
 def remove(request, training_basket_id):
-    if request.is_ajax():
-        item = TrainingBasket.objects.get(id=training_basket_id)
-        item.delete()
-        # return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
-        return JsonResponse({'status': 'ok',
-                             'training_basket_id': training_basket_id})
+    # if request.is_ajax():
+    item = TrainingBasket.objects.get(id=training_basket_id)
+    item.delete()
+    return HttpResponseRedirect(reverse('basketapp:index'))
+        # return JsonResponse({'status': 'ok',
+        #                      'training_basket_id': training_basket_id})

@@ -33,6 +33,7 @@
             </div>
         </div>
         <!-- Section Banner END -->
+    {% if object_list %}
         <div class="content-block" id="page_content">
             <!-- Our Services -->
 
@@ -54,14 +55,14 @@
                                         </div>
                                         <div class="listing-info">
                                             <h3 class="title"><a
-                                                    href="{% url 'mainapp:training_page' item.pk %}">{{ item.training.name }}</a>
+                                                    href="{% url 'mainapp:training_page' item.training.id %}">{{ item.training.name }}</a><br>
+                                                <a href="{% url 'basketapp:remove' item.pk %}" class="btn">удалить</a>
                                             </h3>
                                             <ul class="place-info">
                                                 <li class="open"><i class="fa fa-check"></i>Количество
                                                     недель: {{ item.training.cycle_duration }}</li>
                                                 <li class="open"><i class="fa fa-check"></i>Тренировочных дней в
                                                     неделю: {{ item.training.training_sessions_per_week }}</li>
-                                                <li class="open"><a href="{% url 'basket:remove' item.pk %}" class="btn btn-dark remove-bas">удалить</a></li>
                                             </ul>
                                         </div>
                                     </div>
@@ -78,7 +79,9 @@
             <!-- Our Services -->
 
         </div>
-
+    {% else %}
+        Пусто
+    {% endif %}
 
         <!-- contact area END -->
     </div>
