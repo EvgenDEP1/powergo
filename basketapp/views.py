@@ -25,15 +25,15 @@ def add(request, training_id):
             'status': False,
             'message': 'Авторизуйтесь, чтобы добавить товар в корзину!'
         })
-    training = Training.objects.get(pk=training_id)
+    trainings = Training.objects.get(pk=training_id)
     tra_object, creaated = TrainingBasket.objects.get_or_create(
         user=request.user,
-        training=training
+        training=trainings
     )
     if creaated:
         return JsonResponse({
             'status': True,
-            'id': training.id,
+            'id': trainings.id,
             'message': 'Вы успешно добавили товар в корзину!'
         })
     return JsonResponse({

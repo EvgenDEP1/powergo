@@ -710,6 +710,20 @@ transition: all 0.3s ease 0s;
 
 
 
+/*Корзина если пусто*/
+.pusto-korzina {
+	text-align: justify;
+}
+
+
+
+
+
+.card-tren-rov {
+	display: inline-block;
+}
+
+
 
 
 

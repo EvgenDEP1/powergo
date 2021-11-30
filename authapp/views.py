@@ -1,18 +1,26 @@
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
-from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
-
+from django.http import HttpResponseRedirect, JsonResponse
 from authapp.forms import LoginForm, RegisterForm
 
 
 def login(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and request.is_ajax():
         form = LoginForm(data=request.POST)
         if form.is_valid():
             auth.login(request, form.get_user())
-            return HttpResponseRedirect(reverse('mainapp:index'))
+            # return HttpResponseRedirect(reverse('mainapp:index'))
+            return JsonResponse({
+                'status': True,
+                'messages': 'Вы успешно авторизировались!'
+            })
+        else:
+            return JsonResponse({
+                'status': False,
+                'messages': 'Проверьте имя пользователя и пароль!'
+            })
     else:
         form = LoginForm()
 
