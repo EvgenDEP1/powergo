@@ -1,6 +1,15 @@
+from django.contrib import messages
+from django.core.mail import send_mail
+from django.http import HttpResponseRedirect
+from django.urls import reverse
+
+from powergo import settings
+
 from django.shortcuts import render
 
 from mainapp.models import Training, Weeks, Day, Exercises, Category
+
+from mainapp.forms import MailForm
 
 
 def index(request):
@@ -9,6 +18,26 @@ def index(request):
         'title': 'POWERGO',
     }
     return render(request, 'mainapp/index.html', context)
+
+
+def support(request):
+    if request.method == 'POST':
+        form = MailForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            message = f'От: {form.name} ({form.email})\nСообщение: {form.text}\n'
+            send_mail(settings.EMAIL_TITLE, message, settings.EMAIL_HOST_USER, ['jen_dostovalov@mail.ru'])
+            if send_mail:
+                form.save()
+                messages.success(request, 'Вы успешно отправили письмо!')
+                return HttpResponseRedirect(reverse('index'))
+    else:
+        form = MailForm()
+    context = {
+        'title': 'POWERGO',
+        'form': form,
+    }
+    return render(request, 'mainapp/support.html', context)
 
 
 def training_list(request):

@@ -38,7 +38,6 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/style-time.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'css/templete.css' %}">
     <link class="skin" rel="stylesheet" type="text/css" href="{% static 'css/skin-2.css' %}">
-    <link rel="stylesheet" type="text/css" href="{% static 'css/training.css' %}">
     {% block css %}
 
     {% endblock %}
@@ -88,7 +87,7 @@
 
                             <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
                             <li><a href="{% url 'mainapp:training_list' %}">Тренировки</a></li>
-                            <li><a href="">Контакты</a></li>
+                            <li><a href="{% url 'mainapp:support' %}">Контакты</a></li>
                             {% if user.is_authenticated %}
                                 <li><a href="{% url 'basketapp:index' %}">Избранное</a></li>
                             {% endif %}

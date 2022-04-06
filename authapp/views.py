@@ -8,18 +8,19 @@ from authapp.forms import LoginForm, RegisterForm
 
 def login(request):
     if request.method == 'POST' and request.is_ajax():
+    # if request.method == 'POST':
         form = LoginForm(data=request.POST)
         if form.is_valid():
             auth.login(request, form.get_user())
             # return HttpResponseRedirect(reverse('mainapp:index'))
             return JsonResponse({
                 'status': True,
-                'messages': 'Вы успешно авторизировались!'
+                'message': 'Вы успешно авторизировались!',
             })
         else:
             return JsonResponse({
                 'status': False,
-                'messages': 'Проверьте имя пользователя и пароль!'
+                'message': 'Проверьте имя пользователя и пароль!'
             })
     else:
         form = LoginForm()

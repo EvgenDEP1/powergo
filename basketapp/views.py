@@ -23,7 +23,7 @@ def add(request, training_id):
     if not request.user.is_authenticated:
         return JsonResponse({
             'status': False,
-            'message': 'Авторизуйтесь, чтобы добавить товар в корзину!'
+            'message': 'Авторизуйтесь, чтобы добавить товар в избранное!'
         })
     trainings = Training.objects.get(pk=training_id)
     tra_object, creaated = TrainingBasket.objects.get_or_create(
@@ -34,11 +34,11 @@ def add(request, training_id):
         return JsonResponse({
             'status': True,
             'id': trainings.id,
-            'message': 'Вы успешно добавили товар в корзину!'
+            'message': 'Вы успешно добавили товар в избранное!'
         })
     return JsonResponse({
         'status': False,
-        'message': 'Товар уже в корзине!'
+        'message': 'Товар уже в избранном!'
     })
 
     # return HttpResponseRedirect(reverse('mainapp:training_page',

@@ -34,51 +34,145 @@
         </div>
         <!-- Section Banner END -->
     {% if object_list %}
+{#        <div class="page-content bg-white">#}
+{#        <!-- Section Banner -->#}
+{#        <!-- dlab-bnr-inr dlab-bnr-inr-md bnr-style1 -->#}
+{#        <div id="dezzParticles" class="dlab-bnr-inr dlab-bnr-inr-sm overlay-black-middle"#}
+{#             style="background-image:url(/static/images/main-slider/intro-3.jpg);">#}
+{#            <div class="container">#}
+{#                <div class="dlab-bnr-inr-entry">#}
+{#                    <h1 class="text-white">Тренировки</h1>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+        <!-- Section Banner END -->
         <div class="content-block" id="page_content">
             <!-- Our Services -->
 
 
             <div class="section-full bg-gray-1 content-inner about-us">
-                <div class="container-fluid">
-                    <div class="clearfix container-432">
-                        <ul id="masonry" class="dlab-gallery-listing gallery-grid-4 gallery row">
-                            {% for item in object_list %}
+                {#                <div class="container-fluid">#}
+                {#					<div class="clearfix ">#}
+                <div class="container-45">
+                    {% for item in object_list %}
 
-                                <li class="near-by-you design card-container col-lg-3 col-md-6 col-sm-6 basket-item-{{ item.pk }} card-tren-rov">
-                                    <div class="listing-bx featured-star-right m-b30 style-2 ">
-                                        <div class="listing-media">
-                                            {% if item.training.img %}
-                                                <img src="{{ item.training.img.url }}" alt="">
-                                            {% else %}
-                                                <img src="{% static 'images/main-slider/intro-2.png' %}" alt="">
-                                            {% endif %}
-                                        </div>
-                                        <div class="listing-info">
-                                            <h3 class="title"><a
-                                                    href="{% url 'mainapp:training_page' item.training.id %}">{{ item.training.name }}</a><br>
-                                                <a href="{% url 'basketapp:remove' item.pk %}" class="btn">удалить</a>
-                                            </h3>
-                                            <ul class="place-info">
-                                                <li class="open"><i class="fa fa-check"></i>Количество
-                                                    недель: {{ item.training.cycle_duration }}</li>
-                                                <li class="open"><i class="fa fa-check"></i>Тренировочных дней в
-                                                    неделю: {{ item.training.training_sessions_per_week }}</li>
-                                            </ul>
-                                        </div>
-                                    </div>
-                                </li>
-                            {% endfor %}
+                        <div class="card">
+                            <div>
+                                {% if item.training.img %}
+                                    <img src="{{ item.training.img.url }}" alt="">
+                                {% else %}
+                                    <img src="{% static 'images/main-slider/intro-2.png' %}" alt="">
+                                {% endif %}
+{#                                {% if item.img %}#}
+{#                                    <img src="{{ item.img.url }}" alt="{{ item.name }}">#}
+{#                                {% else %}#}
+{#                                    <img src="{% static 'images/main-slider/intro-2.png' %}" alt="{{ item.name }}">#}
+{#                                {% endif %}#}
+                            </div>
+                            <div class="card-body">
+                                {#                                  <span class="tag tag-teal">Technology</span>#}
+                                <h4>
+                                    <a href="{% url 'mainapp:training_page' item.training.id %}">{{ item.training.name }}</a><br>
+
+{#                                    <div class="wonder-btn">#}
 
 
-                        </ul>
-                    </div>
+                                    <a href="{% url 'basketapp:remove' item.pk %}"
+                                       class="site-button button-lg radius-no text-uppercase js-sctipts-korsina">удалить</a>
+{#                                    </div>#}
+
+
+{#                                    <a href="{% url 'basketapp:remove' item.pk %}" class="btn">удалить</a>#}
+{#                                    <a href="{% url 'mainapp:training_page' item.pk %}">{{ item.name }}</a>#}
+                                </h4>
+                                <ul class="place-info">
+                                    <li class="open"><i class="fa fa-check"></i>Количество
+                                        недель: {{ item.training.cycle_duration }}</li>
+                                    <li class="open"><i class="fa fa-check"></i>Тренировочных дней в
+                                        неделю: {{ item.training.training_sessions_per_week }}</li>
+{#                                    <li class="open"><i class="fa fa-check"></i>Количество#}
+{#                                        недель: {{ item.cycle_duration }}</li>#}
+{#                                    <li class="open"><i class="fa fa-check"></i>Тренировочных дней в#}
+{#                                        неделю: {{ item.training_sessions_per_week }}</li>#}
+                                </ul>
+                                {#                                  <p>#}
+                                {#                                    Количество недель: {{ item.cycle_duration }}#}
+                                {#                                  </p>#}
+                                {#                                    <p>#}
+                                {#                                        Тренировочных дней в неделю: {{ item.training_sessions_per_week }}#}
+                                {#                                    </p>#}
+                                {#                                  <div class="user">#}
+                                {#                                    <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />#}
+                                {#                                    <div class="user-info">#}
+                                {#                                      <h5>July Dec</h5>#}
+                                {#                                      <small>2h ago</small>#}
+                                {#                                    </div>#}
+                                {#                                  </div>#}
+                            </div>
+                        </div>
+
+                    {% endfor %}
                 </div>
+
+
+                {#					</div>#}
+                {#				</div>#}
             </div>
 
 
             <!-- Our Services -->
 
         </div>
+
+        <!-- contact area END -->
+    </div>
+
+
+{#        <div class="content-block" id="page_content">#}
+{#            <!-- Our Services -->#}
+{##}
+{##}
+{#            <div class="section-full bg-gray-1 content-inner about-us">#}
+{#                <div class="container-fluid">#}
+{#                    <div class="clearfix container-432">#}
+{#                        <ul id="masonry" class="dlab-gallery-listing gallery-grid-4 gallery row">#}
+{#                            {% for item in object_list %}#}
+{##}
+{#                                <li class="near-by-you design card-container col-lg-3 col-md-6 col-sm-6 basket-item-{{ item.pk }} card-tren-rov">#}
+{#                                    <div class="listing-bx featured-star-right m-b30 style-2 ">#}
+{#                                        <div class="listing-media">#}
+{#                                            {% if item.training.img %}#}
+{#                                                <img src="{{ item.training.img.url }}" alt="">#}
+{#                                            {% else %}#}
+{#                                                <img src="{% static 'images/main-slider/intro-2.png' %}" alt="">#}
+{#                                            {% endif %}#}
+{#                                        </div>#}
+{#                                        <div class="listing-info">#}
+{#                                            <h3 class="title"><a#}
+{#                                                    href="{% url 'mainapp:training_page' item.training.id %}">{{ item.training.name }}</a><br>#}
+{#                                                <a href="{% url 'basketapp:remove' item.pk %}" class="btn">удалить</a>#}
+{#                                            </h3>#}
+{#                                            <ul class="place-info">#}
+{#                                                <li class="open"><i class="fa fa-check"></i>Количество#}
+{#                                                    недель: {{ item.training.cycle_duration }}</li>#}
+{#                                                <li class="open"><i class="fa fa-check"></i>Тренировочных дней в#}
+{#                                                    неделю: {{ item.training.training_sessions_per_week }}</li>#}
+{#                                            </ul>#}
+{#                                        </div>#}
+{#                                    </div>#}
+{#                                </li>#}
+{#                            {% endfor %}#}
+{##}
+{##}
+{#                        </ul>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{##}
+{##}
+{#            <!-- Our Services -->#}
+{##}
+{#        </div>#}
     {% else %}
         <div class="content-block" id="page_content">
             <div class="section-full bg-gray-1 content-inner about-us">

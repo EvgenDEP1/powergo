@@ -25,6 +25,7 @@ urlpatterns = [
     path('training/', mainapp.training_list, name='training_list'),
     path('training/page/<int:pk>/', mainapp.training_page, name='training_page'),
     path('training/day/<int:pk>/', mainapp.training_day_page, name='training_day_page'),
+    path('support/', mainapp.support, name='support'),
 
 ]
 

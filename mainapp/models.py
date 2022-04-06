@@ -108,6 +108,21 @@ class Exercises(models.Model):
         verbose_name_plural = 'упражнения'
 
 
+class Mail(models.Model):
+    name = models.CharField(verbose_name='Имя', max_length=128)
+    email = models.EmailField(verbose_name='Email')
+    text = models.TextField(verbose_name='Сообщение', max_length=500)
+    date = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return f'{self.name} - {self.email}'
+
+    class Meta:
+        ordering = ['-date']
+        verbose_name = 'Почта'
+        verbose_name_plural = 'Почта'
+
+
 
 
 
