@@ -3,10 +3,139 @@
 
 
 {% block css %}
-    <link rel="stylesheet" type="text/css" href="{% static 'css/training.css' %}">
+{#    <link rel="stylesheet" type="text/css" href="{% static 'css/training.css' %}">#}
 {% endblock %}
 {% block content %}
-    {% for item in exercises %}
-        <h1>{{ item.name }}</h1>
-    {% endfor %}
+
+    <div class="page-content bg-white">
+        <!-- Section Banner -->
+        <!-- overlay-black-middle -->
+        <div class="dlab-bnr-inr dlab-bnr-inr-sm "
+             style="background-image:url(/static/images/main-slider/intro-2.png); ">
+            <div class="container">
+                <div class="dlab-bnr-inr-entry">
+                    <div class="wonder-bx text-white">
+                        <div class="wonder-title">
+                            <h2>{{ day.weeks }} / {{ day.day }} день </h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Section Banner END -->
+
+
+    </div>
+
+    <!-- contact area END -->
+
+
+
+    <div class="section-full bg-white content-inner owl-out">
+        <div class="container">
+
+            <div class="card">
+                <div class="card-body">
+                    <div class="card-card-2">
+                        <div class="card-video-2">
+                            <div id="player{{ item.id }}" style="width: 350px;"></div>
+                            <script>
+                                var player = new Playerjs({
+                                    id: "player{{ item.id }}",
+                                    file: "../../../../media/video/video.mp4",
+                                    poster: "{% static 'images/main-slider/intro-2.png' %}",
+                                });
+                            </script>
+                        </div>
+
+                        <div class="card-text-2">
+                            <h4>Разминка перед тренировкой</h4>
+                            <p class="card-text-2-p">Для разогрева организма и подготовке к тренировке.
+                                выполнять не
+                                менее 5 минут.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+            {% for i in exercises %}
+
+                    <div class="card card-2">
+                        <div class="card-body">
+                            <div class="card-card-2">
+                                <div class="card-video-2">
+                                    <div id="player_{{ i.id }}" style="width: 350px;"></div>
+                                    <script>
+                                        var player = new Playerjs({
+                                            id: "player_{{ i.id }}",
+                                            file: "{{ i.video.url }}",
+                                            {% if i.img %}
+                                                poster: "{{ i.img.url }}",
+                                            {% else %}
+                                                poster: "{% static 'images/main-slider/intro-2.png' %}",
+                                            {% endif %}
+                                        });
+                                    </script>
+                                </div>
+                                <div class="card-text-2">
+                                    <h4>{{ i.name }}</h4>
+                                    <div class="info-card">
+                                        <div class="item">
+                                            <div class="info-head">
+                                                повторений
+                                            </div>
+                                            <div class="info-text">
+                                                {{ i.repetitions }}
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="info-head">
+                                                подходов
+                                            </div>
+                                            <div class="info-text">
+                                                {{ i.approaches }}
+                                            </div>
+                                        </div>
+                                        <div class="item">
+                                            <div class="info-head">
+                                                отдых, мин.
+                                            </div>
+                                            <div class="info-text">
+                                                {{ i.rest }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            {% endfor %}
+
+
+
+            <div class="card" style="margin-top: 30px">
+                <div class="card-body">
+                    <div class="card-card-2">
+                        <div class="card-video-2">
+                            <div id="zaminka-player{{ item.id }}" style="width: 350px;"></div>
+                            <script>
+                                var player = new Playerjs({
+                                    id: "zaminka-player{{ item.id }}",
+                                    file: "../../../../media/video/zaminka.mp4",
+                                    poster: "{% static 'images/main-slider/intro-2.png' %}",
+                                });
+                            </script>
+                        </div>
+
+                        <div class="card-text-2">
+                            <h4>Заминка после тренировки</h4>
+                            <p class="card-text-2-p">Для восстановления дыхания, кровообращения и расслабления мышц. выполнять до 10 минут.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
 {% endblock %}

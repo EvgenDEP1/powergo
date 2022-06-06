@@ -61,7 +61,7 @@ def training_page(request, pk):
         'day': day,
         'exercises': exercises,
         'cat': cat,
-        'title': 'Тренировки',
+        'title': 'POWERGO',
     }
 
     return render(request, 'mainapp/training_page.html', context)
@@ -70,9 +70,11 @@ def training_page(request, pk):
 def training_day_page(request, pk):
     day = Day.objects.get(pk=pk)
     exercises = Exercises.objects.filter(day_id=pk)
+    # trainingpage = Training.objects.get(pk=pk)
     context = {
         'day': day,
         'exercises': exercises,
+        # 'trainingpage': trainingpage,
         'title': 'Тренировки',
     }
 

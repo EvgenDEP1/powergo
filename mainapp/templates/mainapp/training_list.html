@@ -8,7 +8,6 @@
 {% block content %}
     <div class="page-content bg-white">
         <!-- Section Banner -->
-        <!-- dlab-bnr-inr dlab-bnr-inr-md bnr-style1 -->
         <div id="dezzParticles" class="dlab-bnr-inr dlab-bnr-inr-sm overlay-black-middle"
              style="background-image:url(/static/images/main-slider/intro-3.jpg);">
             <div class="container">
@@ -23,8 +22,6 @@
 
 
             <div class="section-full bg-gray-1 content-inner about-us">
-                {#                <div class="container-fluid">#}
-                {#					<div class="clearfix ">#}
                 <div class="container-45">
                     {% for item in traininglist %}
 
@@ -37,7 +34,6 @@
                                 {% endif %}
                             </div>
                             <div class="card-body">
-                                {#                                  <span class="tag tag-teal">Technology</span>#}
                                 <h4>
                                     <a href="{% url 'mainapp:training_page' item.pk %}">{{ item.name }}</a>
                                 </h4>
@@ -47,35 +43,11 @@
                                     <li class="open"><i class="fa fa-check"></i>Тренировочных дней в
                                         неделю: {{ item.training_sessions_per_week }}</li>
                                 </ul>
-                                {#                                  <p>#}
-                                {#                                    Количество недель: {{ item.cycle_duration }}#}
-                                {#                                  </p>#}
-                                {#                                    <p>#}
-                                {#                                        Тренировочных дней в неделю: {{ item.training_sessions_per_week }}#}
-                                {#                                    </p>#}
-                                {#                                  <div class="user">#}
-                                {#                                    <img src="https://yt3.ggpht.com/a/AGF-l7-0J1G0Ue0mcZMw-99kMeVuBmRxiPjyvIYONg=s900-c-k-c0xffffffff-no-rj-mo" alt="user" />#}
-                                {#                                    <div class="user-info">#}
-                                {#                                      <h5>July Dec</h5>#}
-                                {#                                      <small>2h ago</small>#}
-                                {#                                    </div>#}
-                                {#                                  </div>#}
                             </div>
                         </div>
-
                     {% endfor %}
                 </div>
-
-
-                {#					</div>#}
-                {#				</div>#}
             </div>
-
-
-            <!-- Our Services -->
-
         </div>
-
-        <!-- contact area END -->
     </div>
 {% endblock %}

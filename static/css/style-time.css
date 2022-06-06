@@ -760,6 +760,31 @@ transition: all 0.3s ease 0s;
 
 
 
+/**/
+/**/
+/*стили ля oops*/
+/**/
+/**/
+
+
+.oops {
+	width: 300px;
+	margin-left: 35%;
+}
+
+@media only screen and (max-width: 1000px) {
+    .oops {
+		width: 300px;
+		margin-left: 20%;
+	}
+}
+
+@media only screen and (max-width: 600px) {
+    .oops {
+		width: 300px;
+		margin-left: 00%;
+	}
+}
 
 
 
@@ -767,6 +792,50 @@ transition: all 0.3s ease 0s;
 
 
 
+
+
+
+
+/**/
+/**/
+/*Удалить избранное из избранного*/
+/**/
+/**/
+
+
+.edal_basket {
+	/*padding-top: 20px;*/
+	margin-top: 30px;
+}
+
+
+
+
+/**/
+/**/
+/*Главная*/
+/**/
+/**/
+.number-one .number {
+	font-size: 30px;
+	color: #fff;
+}
+
+.number-one .number i {
+	text-align: right;
+	font-size: 50px;
+    font-weight: bold;
+    font-family: sans-serif;
+    color: #C00C80;
+	margin-top: 50px;
+}
+
+.minut {
+	font-size: 25px;
+	color: #000;
+	text-align: justify;
+	line-height: 40px;
+}
 
 
 

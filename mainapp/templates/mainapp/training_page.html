@@ -1,5 +1,6 @@
 {% extends 'mainapp/base.html' %}
 {% load static %}
+{#{% load media %}#}
 
 
 {% block js %}
@@ -17,11 +18,9 @@
             <div class="container">
                 <div class="dlab-bnr-inr-entry">
                     <div class="wonder-bx text-white">
-                        <!-- <div class="wonder-theme">1</div> -->
                         <div class="wonder-title">
                             <h2>{{ trainingpage.name }} <i
                                     class="fa font-20 align-self-center fa-check-circle"></i></h2>
-                            <!-- <p>Winter is gone very soon</p>	 -->
                         </div>
                         <div class="wonder-price">
                             <!-- <p>Price range</p>
@@ -51,7 +50,7 @@
                                     Длительность цикла
                                 </div>
                                 <div class="info-text info-text-2">
-                                    {{ trainingpage.cycle_duration }} недели
+                                    {{ trainingpage.cycle_duration }} недел (ь-и)
                                 </div>
                             </div>
                             <div class="item">
@@ -75,7 +74,7 @@
                                     Тренировок в неделю
                                 </div>
                                 <div class="info-text info-text-2">
-                                    {{ trainingpage.training_sessions_per_week }} дня
+                                    {{ trainingpage.training_sessions_per_week }} дн (я-ей)
                                 </div>
                             </div>
                             <div class="item">
@@ -118,7 +117,14 @@
 
     <!-- contact area END -->
 
-    <!-- Class Time Section Begin -->
+
+
+
+
+
+
+    {% if user.is_authenticated %}
+        <!-- Class Time Section Begin -->
     <section class="classtime-section class-time-table spad">
         <div class="container">
             <div class="row">
@@ -157,7 +163,7 @@
                                             <td>День отдыха</td>
                                         {% else %}
                                             <td class="hover-bg ts-item">
-                                                <a href="#{{ item.day }}">{{ item.day }} день</a>
+                                                <a href="{% url 'mainapp:training_day_page' item.id %}">{{ item.day }} день</a>
                                             </td>
                                         {% endif %}
                                         {#                            <td>День отдыха</td>#}
@@ -166,7 +172,7 @@
                                             <td>День отдыха</td>
                                         {% else %}
                                             <td class="hover-bg ts-item">
-                                                <a href="#{{ item.day }}">{{ item.day }} день</a>
+                                                <a href="{% url 'mainapp:training_day_page' item.id %}">{{ item.day }} день</a>
                                             </td>
                                         {% endif %}
                                     {% elif  item.category == 'WE' %}
@@ -174,7 +180,8 @@
                                             <td>День отдыха</td>
                                         {% else %}
                                             <td class="hover-bg ts-item">
-                                                <a href="#{{ item.day }}">{{ item.day }} день</a>
+                                                <a href="{% url 'mainapp:training_day_page' item.id %}">{{ item.day }} день</a>
+{#                                            #{{ item.day }#}
                                             </td>
                                         {% endif %}
                                     {% elif  item.category == 'TH' %}
@@ -182,7 +189,7 @@
                                             <td>День отдыха</td>
                                         {% else %}
                                             <td class="hover-bg ts-item">
-                                                <a href="#{{ item.day }}">{{ item.day }} день</a>
+                                                <a href="{% url 'mainapp:training_day_page' item.id %}">{{ item.day }} день</a>
                                             </td>
                                         {% endif %}
                                     {% elif  item.category == 'FR' %}
@@ -190,7 +197,7 @@
                                             <td>День отдыха</td>
                                         {% else %}
                                             <td class="hover-bg ts-item">
-                                                <a href="#{{ item.day }}">{{ item.day }} день</a>
+                                                <a href="{% url 'mainapp:training_day_page' item.id %}">{{ item.day }} день</a>
                                             </td>
                                         {% endif %}
                                     {% elif  item.category == 'SA' %}
@@ -198,7 +205,7 @@
                                             <td>День отдыха</td>
                                         {% else %}
                                             <td class="hover-bg ts-item">
-                                                <a href="#{{ item.day }}">{{ item.day }} день</a>
+                                                <a href="{% url 'mainapp:training_day_page' item.id %}">{{ item.day }} день</a>
                                             </td>
                                         {% endif %}
                                     {% elif  item.category == 'SU' %}
@@ -206,7 +213,7 @@
                                             <td>День отдыха</td>
                                         {% else %}
                                             <td class="hover-bg ts-item">
-                                                <a href="#{{ item.day }}">{{ item.day }} день</a>
+                                                <a href="{% url 'mainapp:training_day_page' item.id %}">{{ item.day }} день</a>
                                             </td>
                                         {% endif %}
 
@@ -232,99 +239,18 @@
     <!-- Class Time Section End -->
 
 
-    <div class="section-full bg-white content-inner owl-out">
-        <div class="container">
-            {% for item in day %}
-                {% if item.day != 0 %}
-                    <div class="card card-22" id="{{ item.day }}">
-                        <div class="card-header">
-                            {{ item.weeks }}
-                            / {{ item.day }} день
-                        </div>
+    {% else %}
+        <div class="content-block" id="page_content">
+            <div class="section-full bg-gray-1 content-inner about-us">
+                <div class="container-fluid">
+                    <div class="clearfix container">
+                        <img src="{% static 'images/oops.png' %}" class="oops">
+                        <h1 class="pusto-korzina">Вам нужно авторизоваться для того чтобы просмотреть тренировочный план и тренировки</h1>
                     </div>
-
-
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="card-card-2">
-                                <div class="card-video-2">
-                                    <div id="player{{ item.id }}" style="width: 350px;"></div>
-                                    <script>
-                                        var player = new Playerjs({
-                                            id: "player{{ item.id }}",
-                                            file: "file/video.mp4",
-                                            poster: "{% static 'images/main-slider/intro-2.png' %}",
-                                        });
-                                    </script>
-                                </div>
-
-                                <div class="card-text-2">
-                                    <h4>Разминка перед тренировкой</h4>
-                                    <p class="card-text-2-p">Для разогрева организма и подготовке к тренировке.
-                                        выполнять не
-                                        менее 5 минут.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
-                    {% for i in exercises %}
-
-                        {% if item == i.day %}
-                            <div class="card card-2">
-                                <div class="card-body">
-                                    <div class="card-card-2">
-                                        <div class="card-video-2">
-                                            <div id="player_{{ i.id }}" style="width: 350px;"></div>
-                                            <script>
-                                                var player = new Playerjs({
-                                                    id: "player_{{ i.id }}",
-                                                    file: "{{ i.video.url }}",
-                                                    {% if i.img %}
-                                                        poster: "{{ i.img.url }}",
-                                                    {% else %}
-                                                        poster: "{% static 'images/main-slider/intro-2.png' %}",
-                                                    {% endif %}
-                                                });
-                                            </script>
-                                        </div>
-                                        <div class="card-text-2">
-                                            <h4>{{ i.name }}</h4>
-                                            <div class="info-card">
-                                                <div class="item">
-                                                    <div class="info-head">
-                                                        повторений
-                                                    </div>
-                                                    <div class="info-text">
-                                                        {{ i.repetitions }}
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="info-head">
-                                                        подходов
-                                                    </div>
-                                                    <div class="info-text">
-                                                        {{ i.approaches }}
-                                                    </div>
-                                                </div>
-                                                <div class="item">
-                                                    <div class="info-head">
-                                                        отдых, мин.
-                                                    </div>
-                                                    <div class="info-text">
-                                                        {{ i.rest }}
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        {% endif %}
-                    {% endfor %}
-                {% endif %}
-            {% endfor %}
+                </div>
+            </div>
         </div>
-    </div>
+
+    {% endif %}
+
 {% endblock %}

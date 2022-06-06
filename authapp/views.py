@@ -15,7 +15,7 @@ def login(request):
             # return HttpResponseRedirect(reverse('mainapp:index'))
             return JsonResponse({
                 'status': True,
-                'message': 'Вы успешно авторизировались!',
+                'message': 'Вы успешно авторизовались!',
             })
         else:
             return JsonResponse({
@@ -27,7 +27,7 @@ def login(request):
 
     context = {
         'form': form,
-        'title': 'авторизация',
+        'title': 'POWERGO',
     }
     return render(request, 'authapp/login.html', context)
 
@@ -41,7 +41,7 @@ def register(request):
     else:
         form = RegisterForm()
     context = {
-        'title': 'регистрация',
+        'title': 'POWERGO',
         'form': form,
     }
     return render(request, 'authapp/register.html', context)

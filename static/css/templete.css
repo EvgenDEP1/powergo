@@ -139,21 +139,7 @@
 	box-shadow: 0 0 0 3px rgba(255,255,255,0.2);
 	color: #fff;
 }
-/* .dlab-tabs.search-filter .nav-tabs > li > a.active:after{
-	content: "\f0d7";
-	font-family: FontAwesome;
-	position: absolute;
-	bottom: -15px;
-	font-size: 26px;
-	line-height: 26px;
-	left: 50%;
-	transform: translateX(-50%);
-	-moz-transform: translateX(-50%);
-	-webkit-transform: translateX(-50%);
-	-ms-transform: translateX(-50%);
-	-o-transform: translateX(-50%);
-	color: #4611a7;
-} */
+
 .dlab-tabs.search-filter .nav-tabs > li > a.active i,
 .dlab-tabs.search-filter .nav-tabs > li > a:focus i,
 .dlab-tabs.search-filter .nav-tabs > li > a:hover i{

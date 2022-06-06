@@ -5,71 +5,34 @@
     <div class="container container-2">
         <div class="dlab-bnr-inr-entry align-m dlab-home">
             <div class="bnr-content">
-
                 <div class="tab" role="tabpanel">
-                    <h1 class="text-white">Контакты</h1>
+                    <h1 class="text-white">Поддержка</h1>
 
                     <!-- Nav tabs -->
                     <div class="mb-4 mb-md-0">
                         <div class="clearfix contact-form  m-b30">
-                            <!-- <div class="section-head text-black">
-                                <h2 class="box-title">Get In Touch</h2>
-                                <div class="dlab-separator bg-primary"></div>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud.</p>
-                            </div> -->
                             <div class="dzFormMsg"></div>
-                            <form method="post" class="dzForm" action="script/contact.php">
+                            <form method="post" class="dzForm">
                                 <input type="hidden" value="Contact" name="dzToDo" >
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-{#                                            <div class="input-group">#}
-{#                                                <input name="dzName" type="text" required class="form-control" placeholder="Имя">#}
-                                                {% csrf_token %}
-                                                {{ form.name }}
-{#                                            </div>#}
+                                            {% csrf_token %}
+                                            {{ form.name }}
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
-{#                                            <div class="input-group">#}
-{#                                                <input name="dzEmail" type="email" class="form-control" required  placeholder="Email" >#}
-                                                {% csrf_token %}
-                                                {{ form.email }}
-{#                                            </div>#}
+                                            {% csrf_token %}
+                                            {{ form.email }}
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
-                                            <div class="input-group">
-                                                <input name="dzOther[Phone]" type="text" required class="form-control" placeholder="Phone">
-                                            </div>
-                                        </div>
-                                    </div> -->
-{#                                    <div class="col-md-6">#}
-{#                                        <div class="form-group">#}
-{#                                            <div class="input-group">#}
-{#                                                <input name="dzOther[Subject]" type="text" required class="form-control" placeholder="Тема">#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                    </div>#}
-                                        <div class="col-md-12">
-                                        <div class="form-group">
-{#                                            <div class="input-group">#}
-{#                                                <textarea name="dzMessage" rows="4" class="form-control" required placeholder="Сообщение..."></textarea>#}
-                                                {% csrf_token %}
-                                                {{ form.text }}
-{#                                            </div>#}
+                                            {% csrf_token %}
+                                            {{ form.text }}
                                         </div>
                                     </div>
-{#                                    <div class="col-md-12">#}
-{#                                        <div class="recaptcha-bx">#}
-{#                                            <div class="input-group">#}
-{#                                                <div class="g-recaptcha" data-sitekey="<!-- Put reCaptcha Site Key -->" data-callback="verifyRecaptchaCallback" data-expired-callback="expiredRecaptchaCallback"></div>#}
-{#                                                <input class="form-control d-none" style="display:none;" data-recaptcha="true" required data-error="Please complete the Captcha">#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                    </div>#}
                                     <div class="col-md-12">
                                         <button name="submit" type="submit" value="Submit" class="site-button button-lg radius-xl">ОТПРАВИТЬ</button>
                                     </div>
