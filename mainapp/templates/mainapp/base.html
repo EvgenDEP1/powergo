@@ -5,8 +5,8 @@
     <meta charset="UTF-8">
 
     <!-- FAVICONS ICON -->
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon"/>
-    <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png"/>
+    <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon"/>
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.png' %}"/>
 
     <!-- PAGE TITLE HERE -->
     <title>{{ title|default:"POWERGO" }}</title>
@@ -78,8 +78,9 @@
 
                             <li><a href="{% url 'mainapp:index' %}">Главная</a></li>
                             <li><a href="{% url 'mainapp:training_list' %}">Тренировки</a></li>
-                            <li><a href="{% url 'mainapp:support' %}">Поддержка</a></li>
+
                             {% if user.is_authenticated %}
+                                <li><a href="{% url 'mainapp:support' %}">Поддержка</a></li>
                                 <li><a href="{% url 'basketapp:index' %}">Избранное</a></li>
                             {% endif %}
                         </ul>
@@ -110,7 +111,6 @@
                             <ul>
                                 <!-- <li><a href="index.html">About Us </a></li> -->
                                 <li><a href="{% url 'mainapp:index' %}">Главная </a></li>
-                                <li><a href="{% url 'mainapp:support' %}">Поддержка</a></li>
                                 <!-- <li><a href="about-1.html">About Us</a></li> -->
                                 <li><a href="{% url 'mainapp:training_list' %}">Тренировки</a></li>
                             </ul>
@@ -121,8 +121,17 @@
                         <div class="widget widget_services border-0">
                             <h5 class="m-b30 text-white text-uppercase ">Полезные ссылки</h5>
                             <ul>
-                                <li><a href="index.html">Войти</a></li>
-                                <li><a href="index.html">Регистрация </a></li>
+                                {% if user.is_authenticated %}
+                                    <li><a href="{% url 'basketapp:index' %}">Избранное</a></li>
+                                    <li><a href="{% url 'mainapp:support' %}">Поддержка</a></li>
+                                {% endif %}
+
+                                {% if user.is_authenticated %}
+                                    <li><a href="{% url 'authapp:logout' %}">Выйти</a></li>
+                                {% else %}
+                                    <li><a href="{% url 'authapp:register' %}">Регистрация</a></li>
+                                    <li><a href="{% url 'authapp:login' %}">Войти</a></li>
+                                {% endif %}
 
                         </div>
                     </div>

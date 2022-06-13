@@ -2,6 +2,7 @@ from django.contrib import messages
 from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.urls import reverse
+from django.contrib.auth.decorators import login_required
 
 from powergo import settings
 
@@ -20,6 +21,7 @@ def index(request):
     return render(request, 'mainapp/index.html', context)
 
 
+@login_required
 def support(request):
     if request.method == 'POST':
         form = MailForm(request.POST)
@@ -67,6 +69,7 @@ def training_page(request, pk):
     return render(request, 'mainapp/training_page.html', context)
 
 
+@login_required
 def training_day_page(request, pk):
     day = Day.objects.get(pk=pk)
     exercises = Exercises.objects.filter(day_id=pk)
